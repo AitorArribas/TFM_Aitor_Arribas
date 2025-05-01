@@ -46,10 +46,16 @@ conda activate TFM_Aitor
 ##### 3. Instalar la librería de amazon braket
 
 ```bash
+git clone https://github.com/amazon-braket/amazon-braket-sdk-python.git
 cd amazon-braket-sdk-python
 pip install .
+```
+Se ha observado en algunos casos que este paso produce un error por la librería `sympy`. Para solucionarlo, se recomienda, una vez clonado el repositorio, entrar dentro del archivo `setup.py` y comentar la línea donde pone `sympy`. Después, repite la instalación mediante `pip install .`
+
+```bash
 cd ../
 ```
+
 
 ##### 4. Instalar el resto de librerías
 
