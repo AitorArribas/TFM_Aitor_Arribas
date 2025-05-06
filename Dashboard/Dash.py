@@ -6,6 +6,7 @@ import plotly.express as px
 import pandas as pd
 import seaborn as sns
 import networkx as nx
+from src.aitor_utils import Graph_gen, get_blockade_configurations2, C_from_gr, gaussian
 import numpy as np
 
 from braket.ahs.atom_arrangement import AtomArrangement
@@ -13,15 +14,13 @@ import matplotlib.pyplot as plt
 
 from io import BytesIO
 import base64
-from src.aitor_utils import Graph_gen, get_blockade_configurations2, C_from_gr, gaussian
-
 
 # Crear la aplicación Dash
 app = dash.Dash(__name__)
 
 scale = 5e-6
-df = pd.read_csv('df_1000_semillas.csv')
-clasif = pd.read_csv('drivings_opt_1000_seeds_hp.csv')
+df = pd.read_csv('data/df_1000_semillas.csv')
+clasif = pd.read_csv('./data/drivings_opt_1000_seeds_hp.csv')
 
 b_value = clasif['b'].unique()[15]
 curve_value = 'linear'
@@ -31,9 +30,9 @@ simul2 = simul
 
 
 # Cargar los espectros de energía
-with open("espectros.json", "r") as archivo:
+with open("./data/espectros.json", "r") as archivo:
     espectros_dic = json.load(archivo)
-with open("e_min.json", "r") as archivo:
+with open("./data/e_min.json", "r") as archivo:
     e_min_dic = json.load(archivo)
 
 
@@ -91,9 +90,9 @@ app.layout = html.Div(children=[
             html.Div([
                 'HP: ',
                 dcc.Slider(min=1,
-                           max=10,
+                           max=4,
                            step=0.05,
-                           value=1.85,
+                           value=1.05,
                            marks=None,
                            tooltip={"placement": "bottom", "always_visible": True},
                            id='hp_inv_slider'),
@@ -193,11 +192,11 @@ def espectro(clickeado, b_value=b_value, curva=curve_value):
     Input('hp_inv_slider', 'value'))
 def update_figure_scatter(umbral):
     global simul2
-    simul2 = simul[simul['hp'] > umbral]
+    simul2 = simul[simul['hp'] >= umbral]
 
     ar_gap = px.scatter(simul2, 
                  x='e_gap', 
-                 y='AR_max', 
+                 y='ar', 
                  color='hp',
                  hover_data={'seed': True, 'ar': True, 'e_gap': True, 'succ': True, 'hp_inv': False},
                  custom_data=['seed'], 
