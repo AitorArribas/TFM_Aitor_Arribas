@@ -6,7 +6,6 @@ import plotly.express as px
 import pandas as pd
 import seaborn as sns
 import networkx as nx
-from src.aitor_utils import Graph_gen, get_blockade_configurations2, C_from_gr, gaussian
 import numpy as np
 
 from braket.ahs.atom_arrangement import AtomArrangement
@@ -14,6 +13,8 @@ import matplotlib.pyplot as plt
 
 from io import BytesIO
 import base64
+from src.aitor_utils import Graph_gen, get_blockade_configurations2, C_from_gr, gaussian
+
 
 # Crear la aplicación Dash
 app = dash.Dash(__name__)
