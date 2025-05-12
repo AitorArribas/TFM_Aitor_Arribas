@@ -1,4 +1,4 @@
-# TFM – Título del tfm
+# TFM – Contribuciones a la computación cuántica adiabática en hardware de átomos neutros
 
 > Trabajo de Fin de Máster – Máster en Ciencia de Datos
 
@@ -18,9 +18,19 @@
 
 Este repositorio contiene el código, datos y documentación asociados al Trabajo de Fin de Máster titulado:
 
-> *"Título"*
+> *Contribuciones a la computación cuántica adiabática en hardware de átomos neutros*
 
-El objetivo del proyecto es...
+##### Resúmen:
+
+Este trabajo investiga la resolución del problema del conjunto independiente máximo ponderado (\textit{Maximum Weighted Independent Set}, MWIS), un problema de optimización combinatoria en la teoría de grafos, mediante el uso de ordenadores cuánticos basados en átomos neutros. Para abordar este problema, se ha empleado un simulador cuántico donde se representa el grafo mediante una disposición de átomos en una cuadrícula. En esta configuración, los enlaces entre los nodos del grafo se reflejan en las interacciones entre los átomos. La solución se obtiene mediante una evolución adiabática del sistema, comenzando desde un estado inicial sencillo hasta alcanzar un estado final cuya configuración corresponde a la solución óptima del MWIS.
+
+Para maximizar la probabilidad de obtener dicha solución óptima, se han aplicado tres algoritmos de optimización diferentes con el propósito de identificar aquellos protocolos que ofrecen el mejor rendimiento en la mayoría de los casos estudiados.
+
+Además, el problema se ha analizado en profundidad, identificando características específicas de los grafos que dificultan su resolución. Se propone un nuevo parámetro (\textit{Hardness Parameter}) basado en la estructura espectral de la función de coste del MWIS, que, combinado con otras variables espectrales, permite entrenar un modelo predictivo capaz de anticipar situaciones en las que el simulador podría fallar.
+
+Finalmente, se evalúa el rendimiento de la metodología propuesta sobre un conjunto diverso de grafos y se analiza su escalabilidad al aplicarse a grafos de mayor tamaño.
+
+**Palabras clave:** Optimización de _drivings_ · _Quantum annealing_ · Conjunto Independiente Máximo Ponderado · Computación Cuántica · Átomos neutros
 
 ---
 
@@ -69,7 +79,3 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-## Estructura del repositorio
-
-
-## Resultados principales
